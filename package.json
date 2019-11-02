@@ -1,0 +1,28 @@
+{
+  "name": "bomjs",
+  "version": "1.0.0",
+  "description": "A wrapper over the Australian Bureau of Meteorology api",
+  "main": "dist/app.js",
+  "scripts": {
+    "test": "yarn build && ava tests/*.test.js && rm -rf dist",
+    "tsc": "tsc",
+    "dev": "ts-node-dev --respawn --transpileOnly ./app/app.ts",
+    "build": "yarn tsc && mv build/ dist/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trickypr/bomjs.git"
+  },
+  "author": "",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/trickypr/bomjs/issues"
+  },
+  "homepage": "https://github.com/trickypr/bomjs#readme",
+  "devDependencies": {
+    "ts-node-dev": "^1.0.0-pre.43",
+    "typescript": "^3.6.4",
+    "ava": "^2.4.0"
+  },
+  "dependencies": {}
+}
