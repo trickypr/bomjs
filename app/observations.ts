@@ -1,29 +1,16 @@
-import {parse, X2jOptions} from 'fast-xml-parser'
-import {writeFileSync} from 'fs'
+import {parse} from 'fast-xml-parser'
+
+import {ftpHost, xmlParserConfig} from './constants'
 
 import ftpHandler from './ftpHandler'
 import { objectFilter } from './utils'
-
-export enum States {
-  NSW,
-  QLD,
-  TAS,
-  VIC,
-  NT,
-  WA,
-  SA
-}
-
-export interface IGlobalLocation {
-  lat: number,
-  lon: number,
-  elevation?: number
-}
+import { IGlobalLocation, States } from './interfaces'
 
 export interface IObservation {
   state?: States
   wmo: number
   bomid: number
+  forecastID: string
   name: string
   description: string
   time: Date
@@ -49,6 +36,8 @@ export interface IObservation {
 
 const observationFile = (location: States): string => {
   switch (location) {
+    case States.ACT:
+      return '/anon/gen/fwo/IDN60920.xml'
     case States.NSW:
       return '/anon/gen/fwo/IDN60920.xml'
     case States.NT:
@@ -77,6 +66,7 @@ const generateObservations = (stationData: any): IObservation => {
   const station: IObservation = {
     wmo: stationData['@_wmo-id'],
     bomid: stationData['@_bom-id'],
+    forecastID: stationData['@_forecast-district-id'],
     name: stationData['@_stn-name'],
     description: stationData['@_description'],
     time: new Date(stationData.period['@_time-utc']),
@@ -107,19 +97,16 @@ const generateObservations = (stationData: any): IObservation => {
   return objectFilter(station, (p: any) => typeof p === 'undefined')
 }
 
-const ftpHost: string = 'ftp.bom.gov.au'
-const parserConfig: Partial<X2jOptions> = {ignoreAttributes : false}
-
 export const getObservationsWMO = async (id: number, state: States): Promise<IObservation> => {
   const observationXMLFile = observationFile(state)
-  const {product} = parse(await ftpHandler(ftpHost, observationXMLFile), parserConfig)
+  const {product} = parse(await ftpHandler(ftpHost, observationXMLFile), xmlParserConfig)
 
   return generateObservations(product.observations.station.filter((s: any) => Number(s['@_wmo-id']) === id)[0])
 }
 
 export const getObservationsBOMID = async (id: number, state: States): Promise<IObservation> => {
   const observationXMLFile = observationFile(state)
-  const {product} = parse(await ftpHandler(ftpHost, observationXMLFile), parserConfig)
+  const {product} = parse(await ftpHandler(ftpHost, observationXMLFile), xmlParserConfig)
 
   return generateObservations(product.observations.station.filter((s: any) => Number(s['@_bom-id']) === id)[0])
 }

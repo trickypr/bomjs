@@ -6,8 +6,9 @@
   "scripts": {
     "test": "ava tests/*.test.js",
     "tsc": "tsc",
-    "dev": "ts-node-dev --respawn --transpileOnly ./app/app.ts",
-    "build": "rm -rf dist && yarn tsc && mv build/ dist/"
+    "dev": "yarn build && yarn test && yarn clean",
+    "build": "rm -rf dist && yarn tsc && mv build/ dist/",
+    "clean": "rm -rf dist"
   },
   "repository": {
     "type": "git",
