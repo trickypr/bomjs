@@ -6,6 +6,7 @@
   "scripts": {
     "test": "ava tests/*.test.js",
     "tsc": "tsc",
+    "lint": "eslint .",
     "dev": "yarn build && yarn test && yarn clean",
     "build": "rm -rf dist && yarn tsc && mv build/ dist/",
     "clean": "rm -rf dist"
@@ -21,8 +22,10 @@
   },
   "homepage": "https://github.com/trickypr/bomjs#readme",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.6.1",
+    "@typescript-eslint/parser": "^2.6.1",
     "ava": "^2.4.0",
-    "ts-node-dev": "^1.0.0-pre.43",
+    "eslint": "^6.6.0",
     "typescript": "^3.6.4"
   },
   "dependencies": {
