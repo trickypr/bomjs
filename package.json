@@ -9,7 +9,9 @@
     "lint": "eslint .",
     "dev": "yarn build && yarn test && yarn clean",
     "build": "rm -rf dist && yarn tsc && mv build/ dist/",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "repository": {
     "type": "git",
@@ -26,11 +28,13 @@
     "@typescript-eslint/parser": "^2.6.1",
     "ava": "^2.4.0",
     "eslint": "^6.6.0",
-    "typescript": "^3.6.4"
+    "typescript": "^3.6.4",
+    "vuepress": "^1.2.0"
   },
   "dependencies": {
     "@types/ftp": "^0.3.29",
     "fast-xml-parser": "^3.14.0",
-    "ftp": "^0.3.10"
+    "ftp": "^0.3.10",
+    "node-cache": "^5.0.1"
   }
 }
