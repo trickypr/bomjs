@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import { getForecastFromDescription, getForecast, States } from '../dist/app'
+import { getForecastFromDescription, getForecast, States } from '../build/app'
 
 test('Forecast from descriptions', async t => {
   try {

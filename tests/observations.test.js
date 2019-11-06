@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import { getObservationsWMO, getObservationsBOMID, States } from '../dist/app'
+import { getObservationsWMO, getObservationsBOMID, States } from '../build/app'
 
 test('WMO Station Observation', async t => {  
   try {
