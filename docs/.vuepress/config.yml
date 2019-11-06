@@ -4,7 +4,3 @@ themeConfig:
   nav:
   - text: 'Guide'
     link: /guide/
-  
-  sidebar:
-  - '/guide'
-  - '/docs'
