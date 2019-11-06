@@ -21,23 +21,3 @@ test('Forecast from forecast id', async t => {
 
   t.pass()
 })
-
-test('Forecast from descriptions 2', async t => {
-  try {
-    await getForecastFromDescription('canberra', States.NSW)
-  } catch (err) {
-    t.pass(err.toString())
-  }
-
-  t.pass()
-})
-
-test('Forecast from forecast id 2', async t => {
-  try {
-    await getForecast('NSW_PW012', States.NSW)
-  } catch (err) {
-    t.pass(err.toString())
-  }
-
-  t.pass()
-})

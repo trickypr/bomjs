@@ -1,1 +1,10 @@
-title: 'BOMjs Docs'
+title: 'bom.js Docs'
+
+themeConfig:
+  nav:
+  - text: 'Guide'
+    link: /guide/
+  
+  sidebar:
+  - '/guide'
+  - '/docs'
