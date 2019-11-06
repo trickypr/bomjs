@@ -1,14 +1,14 @@
 ---
 home: true
-heroText: BOMjs
+heroText: bom.js
 tagline: A wrapper around the Australian Bureau of Meteorology public xml API
 actionText: Get Started →
 actionLink: /guide/
-# features:
-# - title: Simplicity First
-#   details: Minimal setup with markdown-centered project structure helps you focus on writing.
-# - title: Vue-Powered
-#   details: Enjoy the dev experience of Vue + webpack, use Vue components in markdown, and develop custom themes with Vue.
-# - title: Performant
-#   details: VuePress generates pre-rendered static HTML for each page, and runs as an SPA once a page is loaded.
+features:
+- title: Simple
+  details: Provides a simple wrapper over BOM's API 
+- title: Fast
+  details: Uses incredibly fast XML parsers and caching to provide you with speed and accuracy 
+- title: Type Checked
+  details: Built upon typescript to give you native type checking in typescript and intellisense everywhere 
 ---
