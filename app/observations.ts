@@ -35,27 +35,29 @@ export interface IObservation {
 }
 
 const observationFile = (location: States): string => {
+  const link = (a: string) => `/anon/gen/fwo/ID${a}.xml`
   switch (location) {
     case States.ACT:
-      return '/anon/gen/fwo/IDN60920.xml'
+      console.warn('ACT shares the same data sources as NSW')
+      return observationFile(States.NSW)
     case States.NSW:
-      return '/anon/gen/fwo/IDN60920.xml'
+      return link('N60920')
     case States.NT:
-      return '/anon/gen/fwo/IDD60920.xml'
+      return link('D60920')
     case States.QLD:
-      return '/anon/gen/fwo/IDQ60920.xml'
+      return link('Q60920')
     case States.SA:
-      return '/anon/gen/fwo/IDS60920.xml'
+      return link('S60920')
     case States.TAS:
-      return '/anon/gen/fwo/IDT60920.xml'
+      return link('T60920')
     case States.VIC:
-      return '/anon/gen/fwo/IDV60920.xml'
+      return link('V60920')
     case States.WA:
-      return '/anon/gen/fwo/IDW60920.xml'
+      return link('W60920')
+    default:
+      console.warn(`Warning: The enum with the value ${location} does not mach any forecast file, defaulting to the NSW (${States.NSW}) forecast file`)
+      return observationFile(States.NSW)
   }
-
-  console.warn(`Warning: The enum with the value ${location} does not mach any forecast file, defaulting to the NSW (${States.NSW}) forecast file`)
-  return observationFile(States.NSW)
 }
 
 const generateObservations = (stationData: any): IObservation => {

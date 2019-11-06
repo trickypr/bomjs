@@ -1,50 +1,34 @@
-import {writeFileSync} from 'fs'
+import { parse } from 'fast-xml-parser'
 
 import {ftpHost, xmlParserConfig} from './constants'
-
-import { States } from "./interfaces"
-import ftpHandler from "./ftpHandler"
-import { parse } from 'fast-xml-parser'
+import { States, IForecast, IPlaceForecasts } from './interfaces'
+import ftpHandler from './ftpHandler'
 import { objectFilter } from './utils'
 
-export interface IForecast {
-  index: number
-  startTime: Date
-  endDate: Date
-  forecast: string
-  fireDanger?: string
-  uv?: string
-}
-
-export interface IPlaceForecasts {
-  forecastID: string
-  description: string
-  forecasts: IForecast[]
-}
-
 const observationFile = (location: States): string[] => {
+  const link = (a: string, b: string) => [`/anon/gen/fwo/ID${a}.xml`, `/anon/gen/fwo/ID${b}.xml`]
   switch (location) {
     case States.ACT:
-        console.warn('ACT shares the same data sources as NSW')
+      console.warn('ACT shares the same data sources as NSW')
       return observationFile(States.NSW)
     case States.NSW:
-      return ['/anon/gen/fwo/IDN11100.xml', '/anon/gen/fwo/IDN11050.xml']
+      return link('N11100', 'N11050')
     case States.NT:
-      return ['/anon/gen/fwo/IDD10208.xml', '/anon/gen/fwo/IDD10198.xml']
+      return link('D10208', 'D10198')
     case States.QLD:
-      return ['/anon/gen/fwo/IDQ11296.xml', '/anon/gen/fwo/IDQ10605.xml']
+      return link('Q11296', 'Q10605')
     case States.SA:
-      return ['/anon/gen/fwo/IDS11039.xml', '/anon/gen/fwo/IDS10037.xml']
+      return link('S11039', 'S10037')
     case States.TAS:
-      return ['/anon/gen/fwo/IDT13515.xml', '/anon/gen/fwo/IDT13630.xml']
+      return link('T13515', 'T13630')
     case States.VIC:
-      return ['/anon/gen/fwo/IDV10752.xml', '/anon/gen/fwo/IDV10751.xml']
+      return link('V10752', 'V10751')
     case States.WA:
-      return ['/anon/gen/fwo/IDW14100.xml', '/anon/gen/fwo/IDW12400.xml']
+      return link('W14100', 'W12400')
+    default:
+      console.warn(`Warning: The enum with the value ${location} does not mach any forecast file, defaulting to the NSW (${States.NSW}) forecast file`)
+      return observationFile(States.NSW)
   }
-
-  console.warn(`Warning: The enum with the value ${location} does not mach any forecast file, defaulting to the NSW (${States.NSW}) forecast file`)
-  return observationFile(States.NSW)
 }
 
 const getFileCoreData = async (file: string) => parse(await ftpHandler(ftpHost, file), xmlParserConfig).product.forecast.area

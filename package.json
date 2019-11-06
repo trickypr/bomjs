@@ -2,14 +2,13 @@
   "name": "bomjs",
   "version": "1.0.0",
   "description": "A wrapper over the Australian Bureau of Meteorology api",
-  "main": "dist/app.js",
+  "main": "build/app.js",
   "scripts": {
     "test": "ava tests/*.test.js",
     "tsc": "tsc",
     "lint": "eslint .",
-    "dev": "yarn build && yarn test && yarn clean",
-    "build": "rm -rf dist && yarn tsc && mv build/ dist/",
-    "clean": "rm -rf dist",
+    "dev": "yarn build && yarn test",
+    "build": "yarn tsc",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
@@ -35,6 +34,12 @@
     "@types/ftp": "^0.3.29",
     "fast-xml-parser": "^3.14.0",
     "ftp": "^0.3.10",
+    "ghooks": "^2.0.4",
     "node-cache": "^5.0.1"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "yarn lint"
+    }
   }
 }
