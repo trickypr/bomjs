@@ -4,7 +4,7 @@
   "description": "A wrapper over the Australian Bureau of Meteorology api",
   "main": "build/app.js",
   "scripts": {
-    "test": "ava tests/*.test.js",
+    "test": "ava",
     "tsc": "tsc",
     "lint": "eslint .",
     "dev": "yarn build && yarn test",
@@ -16,13 +16,15 @@
     "type": "git",
     "url": "git+https://github.com/trickypr/bomjs.git"
   },
-  "author": "",
+  "author": ["trickypr", "craftydh"],
   "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/trickypr/bomjs/issues"
   },
   "homepage": "https://github.com/trickypr/bomjs#readme",
   "devDependencies": {
+    "@types/ftp": "^0.3.29",
+    "ghooks": "^2.0.4",
     "@typescript-eslint/eslint-plugin": "^2.6.1",
     "@typescript-eslint/parser": "^2.6.1",
     "ava": "^2.4.0",
@@ -31,15 +33,16 @@
     "vuepress": "^1.2.0"
   },
   "dependencies": {
-    "@types/ftp": "^0.3.29",
     "fast-xml-parser": "^3.14.0",
     "ftp": "^0.3.10",
-    "ghooks": "^2.0.4",
     "node-cache": "^5.0.1"
   },
   "config": {
     "ghooks": {
       "pre-commit": "yarn lint"
     }
+  },
+  "ava": {
+    "files": ["tests/*.test.js"]
   }
 }
