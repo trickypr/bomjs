@@ -2,12 +2,15 @@
   "name": "bomjs",
   "version": "1.0.0",
   "description": "A wrapper over the Australian Bureau of Meteorology api",
-  "main": "dist/app.js",
+  "main": "build/app.js",
   "scripts": {
-    "test": "yarn build && ava tests/*.test.js && rm -rf dist",
+    "test": "ava tests/*.test.js",
     "tsc": "tsc",
-    "dev": "ts-node-dev --respawn --transpileOnly ./app/app.ts",
-    "build": "yarn tsc && mv build/ dist/"
+    "lint": "eslint .",
+    "dev": "yarn build && yarn test",
+    "build": "yarn tsc",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "repository": {
     "type": "git",
@@ -20,9 +23,23 @@
   },
   "homepage": "https://github.com/trickypr/bomjs#readme",
   "devDependencies": {
-    "ts-node-dev": "^1.0.0-pre.43",
+    "@typescript-eslint/eslint-plugin": "^2.6.1",
+    "@typescript-eslint/parser": "^2.6.1",
+    "ava": "^2.4.0",
+    "eslint": "^6.6.0",
     "typescript": "^3.6.4",
-    "ava": "^2.4.0"
+    "vuepress": "^1.2.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@types/ftp": "^0.3.29",
+    "fast-xml-parser": "^3.14.0",
+    "ftp": "^0.3.10",
+    "ghooks": "^2.0.4",
+    "node-cache": "^5.0.1"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "yarn lint"
+    }
+  }
 }

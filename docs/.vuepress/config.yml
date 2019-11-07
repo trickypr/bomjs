@@ -1,0 +1,6 @@
+title: 'bom.js Docs'
+
+themeConfig:
+  nav:
+  - text: 'Guide'
+    link: /guide/
