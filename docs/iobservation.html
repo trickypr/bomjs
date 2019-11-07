@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>IObservation | bom.js Docs</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.8bcf7c97.css" as="style"><link rel="preload" href="/assets/js/app.c771cfd4.js" as="script"><link rel="preload" href="/assets/js/2.2afae367.js" as="script"><link rel="preload" href="/assets/js/7.0fd32235.js" as="script"><link rel="prefetch" href="/assets/js/3.a01b05e6.js"><link rel="prefetch" href="/assets/js/4.971fb7ff.js"><link rel="prefetch" href="/assets/js/5.d6913d93.js"><link rel="prefetch" href="/assets/js/6.0b9671c3.js"><link rel="prefetch" href="/assets/js/8.8b4cfcf2.js"><link rel="prefetch" href="/assets/js/9.f68989a5.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.8bcf7c97.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">bom.js Docs</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link">Guide</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link">Guide</a></div> <!----></nav>  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="iobservation"><a href="#iobservation" class="header-anchor">#</a> IObservation</h1> <p><code>IObservation</code> is the type returned by observation functions.</p> <table><thead><tr><th>Name</th> <th>Type</th> <th>Description</th> <th>Required</th></tr></thead> <tbody><tr><td>wmo</td> <td>number</td> <td>Station id</td> <td>true</td></tr> <tr><td>bomid</td> <td>number</td> <td>Station id</td> <td>true</td></tr> <tr><td>forecastID</td> <td>string</td> <td>ID for forecasting</td> <td>true</td></tr> <tr><td>name</td> <td>string</td> <td>The name of the station</td> <td>true</td></tr> <tr><td>description</td> <td>string</td> <td>Similar to name</td> <td>true</td></tr> <tr><td>time</td> <td>Date</td> <td>The time captured</td> <td>true</td></tr> <tr><td>loc</td> <td><a href="/docs/igloballocation.html">IGlobalLocation</a></td> <td>Station Location</td> <td>true</td></tr> <tr><td>state</td> <td>States</td> <td>State / territory location</td> <td>false</td></tr> <tr><td>apparentTemp</td> <td>number</td> <td>Feels like temperature</td> <td>false</td></tr> <tr><td>deltaT</td> <td>number</td> <td>???????</td> <td>false</td></tr> <tr><td>airTemperature</td> <td>number</td> <td>Air temperature</td> <td>false</td></tr> <tr><td>dewPoint</td> <td>number</td> <td>Temperature for dew to form</td> <td>false</td></tr> <tr><td>pressure</td> <td>number</td> <td>Air pressure</td> <td>false</td></tr> <tr><td>qnhPressure</td> <td>number</td> <td>????????</td> <td>false</td></tr> <tr><td>relHumidity</td> <td>number</td> <td>Humidity (%)</td> <td>false</td></tr> <tr><td>windDir</td> <td>string</td> <td>Wind direction</td> <td>false</td></tr> <tr><td>windDirDeg</td> <td>number</td> <td>Wind direction degrees</td> <td>false</td></tr> <tr><td>windSpdKMH</td> <td>number</td> <td>Wind speed</td> <td>false</td></tr> <tr><td>windSpdKnots</td> <td>number</td> <td>Wind speed</td> <td>false</td></tr> <tr><td>rainfall</td> <td>number</td> <td>rainfall</td> <td>false</td></tr> <tr><td>rainfallHour</td> <td>number</td> <td>Rainfall for the hour</td> <td>false</td></tr> <tr><td>rainfall10</td> <td>number</td> <td>Rainfall ????</td> <td>false</td></tr> <tr><td>raifall_24hr</td> <td>number</td> <td>Rainfall 24hr</td> <td>false</td></tr> <tr><td>maximumAirTemperature</td> <td>number</td> <td>Max temperature for the day</td> <td>false</td></tr> <tr><td>minimumAirTemperature</td> <td>number</td> <td>Min temperature for the day</td> <td>false</td></tr></tbody></table> <h2 id="raw-code"><a href="#raw-code" class="header-anchor">#</a> Raw code</h2> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">IObservation</span> <span class="token punctuation">{</span>
+  state<span class="token operator">?</span><span class="token punctuation">:</span> States
+  wmo<span class="token punctuation">:</span> <span class="token builtin">number</span>
+  bomid<span class="token punctuation">:</span> <span class="token builtin">number</span>
+  forecastID<span class="token punctuation">:</span> <span class="token builtin">string</span>
+  name<span class="token punctuation">:</span> <span class="token builtin">string</span>
+  description<span class="token punctuation">:</span> <span class="token builtin">string</span>
+  time<span class="token punctuation">:</span> Date
+  loc<span class="token punctuation">:</span> IGlobalLocation
+  apparentTemp<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token builtin">number</span>
+  deltaT<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token builtin">number</span>
+  airTemperature<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token builtin">number</span>
+  dewPoint<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token builtin">number</span>
+  pressure<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token builtin">number</span>
+  qnhPressure<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token builtin">number</span>
+  relHumidity<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token builtin">number</span>
+  windDir<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token builtin">string</span>
+  windDirDeg<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token builtin">number</span>
+  windSpdKMH<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token builtin">number</span>
+  windSpdKnots<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token builtin">number</span>
+  rainfall<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token builtin">number</span>
+  rainfallHour<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token builtin">number</span>
+  rainfall10<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token builtin">number</span>
+  rainfall_24hr<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token builtin">number</span>
+  maximumAirTemperature<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token builtin">number</span>
+  minimumAirTemperature<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token builtin">number</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.c771cfd4.js" defer></script><script src="/assets/js/2.2afae367.js" defer></script><script src="/assets/js/7.0fd32235.js" defer></script>
+  </body>
+</html>
