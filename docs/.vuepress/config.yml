@@ -1,4 +1,5 @@
 title: 'bom.js Docs'
+base: '/bomjs/'
 
 themeConfig:
   nav:
