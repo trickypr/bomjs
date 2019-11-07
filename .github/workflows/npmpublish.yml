@@ -1,4 +1,4 @@
-name: Node.js Package
+name: Deploy
 
 on:
   release:
@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: 12
       - run: npm i
-      - run: npm test
+      - run: npm run build && npm test
 
   publish-npm:
     needs: build
@@ -25,7 +25,7 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - run: npm i
-      - run: npm publish
+      - run: npm run build && npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
@@ -40,6 +40,6 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: '@trickypr'
       - run: npm i
-      - run: npm publish
+      - run: npm run build && npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
