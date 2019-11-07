@@ -16,7 +16,7 @@ export default (host: string, file: string): Promise<string> => new Promise((res
       if (err) rej(err)
       let contents: string = ''
 
-      stream.on('data', data => data += contents)
+      stream.on('data', data => contents += data )
       stream.on('end', () => {
         client.end()
         const d = parse(contents).product.amoc
