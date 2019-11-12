@@ -1,6 +1,6 @@
 {
   "name": "bomjs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A wrapper over the Australian Bureau of Meteorology api",
   "main": "build/app.js",
   "scripts": {
@@ -12,6 +12,9 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
+  "engines": {
+    "node": ">=10.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/trickypr/bomjs.git"
@@ -21,15 +24,15 @@
   "bugs": {
     "url": "https://github.com/trickypr/bomjs/issues"
   },
-  "homepage": "https://github.com/trickypr/bomjs#readme",
+  "homepage": "https://trickypr.github.io/bomjs/",
   "devDependencies": {
     "@types/ftp": "^0.3.29",
     "ghooks": "^2.0.4",
-    "@typescript-eslint/eslint-plugin": "^2.6.1",
-    "@typescript-eslint/parser": "^2.6.1",
+    "@typescript-eslint/eslint-plugin": "^2.7.0",
+    "@typescript-eslint/parser": "^2.7.0",
     "ava": "^2.4.0",
     "eslint": "^6.6.0",
-    "typescript": "^3.6.4",
+    "typescript": "^3.7.2",
     "vuepress": "^1.2.0"
   },
   "dependencies": {
