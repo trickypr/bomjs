@@ -19,26 +19,29 @@
     "type": "git",
     "url": "git+https://github.com/trickypr/bomjs.git"
   },
-  "author": ["trickypr", "craftydh"],
+  "author": [
+    "trickypr",
+    "craftydh"
+  ],
   "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/trickypr/bomjs/issues"
   },
   "homepage": "https://trickypr.github.io/bomjs/",
   "devDependencies": {
-    "@types/ftp": "^0.3.29",
-    "ghooks": "^2.0.4",
-    "@typescript-eslint/eslint-plugin": "^2.7.0",
-    "@typescript-eslint/parser": "^2.7.0",
+    "@types/ftp": "^0.3.30",
+    "@typescript-eslint/eslint-plugin": "^2.13.0",
+    "@typescript-eslint/parser": "^2.13.0",
     "ava": "^2.4.0",
-    "eslint": "^6.6.0",
-    "typescript": "^3.7.2",
+    "eslint": "^6.8.0",
+    "ghooks": "^2.0.4",
+    "typescript": "^3.7.4",
     "vuepress": "^1.2.0"
   },
   "dependencies": {
-    "fast-xml-parser": "^3.14.0",
+    "fast-xml-parser": "^3.15.1",
     "ftp": "^0.3.10",
-    "node-cache": "^5.0.1"
+    "node-cache": "^5.1.0"
   },
   "config": {
     "ghooks": {
@@ -46,6 +49,8 @@
     }
   },
   "ava": {
-    "files": ["tests/*.test.js"]
+    "files": [
+      "tests/*.test.js"
+    ]
   }
 }
