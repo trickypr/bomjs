@@ -29,7 +29,6 @@
   },
   "homepage": "https://trickypr.github.io/bomjs/",
   "devDependencies": {
-    "@types/ftp": "^0.3.30",
     "@typescript-eslint/eslint-plugin": "^2.13.0",
     "@typescript-eslint/parser": "^2.13.0",
     "ava": "^2.4.0",
@@ -39,9 +38,7 @@
     "vuepress": "^1.2.0"
   },
   "dependencies": {
-    "fast-xml-parser": "^3.15.1",
-    "ftp": "^0.3.10",
-    "node-cache": "^5.1.0"
+    "cross-fetch": "^3.0.6"
   },
   "config": {
     "ghooks": {
@@ -50,7 +47,7 @@
   },
   "ava": {
     "files": [
-      "tests/*.test.js"
+      "tests/**/*.test.js"
     ]
   }
 }
