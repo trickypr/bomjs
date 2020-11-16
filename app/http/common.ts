@@ -1,9 +1,22 @@
+import fetch from 'cross-fetch'
+
+import { endPoint } from './constants'
+
 export interface Metadata {
   responseTimestamp: Date
 }
 
 export interface RawMetadata {
   'response_timestamp': string
+}
+
+export interface GeoPos {
+  lat: number
+  lon: number
+}
+
+export async function grabJSON(url: string): Promise<any> {
+  return (await (await fetch(`${endPoint}${url}`)).json())
 }
 
 export function loadMetadata(metadata: RawMetadata): Metadata {

@@ -1,7 +1,4 @@
-import fetch from 'cross-fetch'
-
-import { loadMetadata, loadState, Metadata, RawMetadata, State } from './common'
-import { endPoint } from './constants'
+import { grabJSON, loadMetadata, loadState, Metadata, RawMetadata, State } from './common'
 
 export interface SearchLocation {
   geohash: string,
@@ -44,7 +41,7 @@ function loadData(raw: RawSearchLocation[]): SearchLocation[] {
 }
 
 export async function search(query: string): Promise<SearchResponse> {
-  const raw = (await (await fetch(`${endPoint}locations?search=${query}`)).json()) as RawSearchResponse
+  const raw = await grabJSON(`locations?search=${query}`) as RawSearchResponse
 
   const metadata: Metadata = loadMetadata(raw.metadata)
   const data: SearchLocation[] = loadData(raw.data)
