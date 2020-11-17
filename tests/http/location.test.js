@@ -26,16 +26,22 @@ test('Init location: Sydney', async t => {
   t.pass()
 })
 
-test('Temperature: Canberra', async t => {
+test('Observations: Canberra', async t => {
   const location = await canberra()
+  
   const temperature = await location.getTemp()
+  const feelsLike   = await location.getFeelsLike()
 
-  t.true(typeof temperature == 'number')
+  t.true(typeof temperature == 'number', 'Temperature')
+  t.true(typeof feelsLike == 'number', 'Feels like')
 })
 
-test('Temperature: Sydney', async t => {
+test('Observations: Sydney', async t => {
   const location = await sydney()
-  const temperature = await location.getTemp()
 
-  t.true(typeof temperature == 'number')
+  const temperature = await location.getTemp()
+  const feelsLike   = await location.getFeelsLike()
+
+  t.true(typeof temperature == 'number', 'Temperature')
+  t.true(typeof feelsLike == 'number', 'Feels like')
 })

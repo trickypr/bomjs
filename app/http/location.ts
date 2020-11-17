@@ -142,4 +142,9 @@ export class Location {
     const observation = await this.observationData()
     return observation.temp
   }
+
+  async getFeelsLike(): Promise<number> {
+    const observation = await this.observationData()
+    return observation.feelsLike
+  }
 }
