@@ -4,10 +4,12 @@ import { endPoint } from './constants'
 
 export interface Metadata {
   responseTimestamp: Date
+  issueTime?: Date
 }
 
 export interface RawMetadata {
   'response_timestamp': string
+  'issue_time'?: string
 }
 
 export interface GeoPos {
