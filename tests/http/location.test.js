@@ -31,9 +31,13 @@ test('Observations: Canberra', async t => {
   
   const temperature = await location.getTemp()
   const feelsLike   = await location.getFeelsLike()
+  const humidity    = await location.getHumidity()
+  const daysRain    = await location.getHumidity()
 
   t.true(typeof temperature == 'number', 'Temperature')
   t.true(typeof feelsLike == 'number', 'Feels like')
+  t.true(typeof humidity == 'number', 'Humidity')
+  t.true(typeof daysRain == 'number', 'Day\'s rain')
 })
 
 test('Observations: Sydney', async t => {
@@ -41,7 +45,11 @@ test('Observations: Sydney', async t => {
 
   const temperature = await location.getTemp()
   const feelsLike   = await location.getFeelsLike()
+  const humidity    = await location.getHumidity()
+  const daysRain    = await location.getHumidity()
 
   t.true(typeof temperature == 'number', 'Temperature')
   t.true(typeof feelsLike == 'number', 'Feels like')
+  t.true(typeof humidity == 'number', 'Humidity')
+  t.true(typeof daysRain == 'number', 'Day\'s rain')
 })
