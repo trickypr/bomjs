@@ -26,30 +26,22 @@ test('Init location: Sydney', async t => {
   t.pass()
 })
 
-test('Observations: Canberra', async t => {
-  const location = await canberra()
-  
-  const temperature = await location.getTemp()
-  const feelsLike   = await location.getFeelsLike()
-  const humidity    = await location.getHumidity()
-  const daysRain    = await location.getHumidity()
+const observationTest = async (l, t) => {
+  const temperature = await l.getTemp()
+  const feelsLike   = await l.getFeelsLike()
+  const humidity    = await l.getHumidity()
+  const daysRain    = await l.getHumidity()
+  const wind        = await l.getWind()
+
+  await l.getGust()
 
   t.true(typeof temperature == 'number', 'Temperature')
   t.true(typeof feelsLike == 'number', 'Feels like')
   t.true(typeof humidity == 'number', 'Humidity')
   t.true(typeof daysRain == 'number', 'Day\'s rain')
-})
+  t.truthy(wind, 'Wind observation')
+}
 
-test('Observations: Sydney', async t => {
-  const location = await sydney()
+test('Observations: Canberra', async t => await observationTest(await canberra(), t))
 
-  const temperature = await location.getTemp()
-  const feelsLike   = await location.getFeelsLike()
-  const humidity    = await location.getHumidity()
-  const daysRain    = await location.getHumidity()
-
-  t.true(typeof temperature == 'number', 'Temperature')
-  t.true(typeof feelsLike == 'number', 'Feels like')
-  t.true(typeof humidity == 'number', 'Humidity')
-  t.true(typeof daysRain == 'number', 'Day\'s rain')
-})
+test('Observations: Sydney', async t => await observationTest(await sydney(), t))

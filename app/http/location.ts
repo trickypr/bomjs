@@ -157,4 +157,14 @@ export class Location {
     const observation = await this.observationData()
     return observation.daysRain
   }
+
+  async getWind(): Promise<WindObservation> {
+    const observation = await this.observationData()
+    return observation.wind
+  }
+
+  async getGust(): Promise<GustObservation | undefined> {
+    const observation = await this.observationData()
+    return observation.gust
+  }
 }

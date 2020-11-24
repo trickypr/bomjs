@@ -10,10 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - run: npm i
-      - run: npm run build && npm test
+      - name: Update code
+        run: yarn install --frozen-lockfile
+      - run: yarn build && yarn test
 
   publish-npm:
     needs: build
@@ -22,10 +21,9 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: npm i
-      - run: npm run build && npm publish
+      - run: yarn install --frozen-lockfile
+      - run: yarn build && npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
@@ -36,10 +34,9 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: 12
           registry-url: https://npm.pkg.github.com/
           scope: '@trickypr'
-      - run: npm i
-      - run: npm run build && npm publish
+      - run: yarn install --frozen-lockfile
+      - run: yarn build && npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
