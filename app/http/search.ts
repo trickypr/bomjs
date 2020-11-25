@@ -41,6 +41,16 @@ function loadData(raw: RawSearchLocation[]): SearchLocation[] {
 }
 
 export async function search(query: string): Promise<SearchResponse> {
+  if (query.length < 3) {
+    console.warn('Search query must have 3 or more characters. Returning an empty data value')
+    return {
+      metadata: {
+        responseTimestamp: new Date()
+      },
+      data: []
+    }
+  }
+
   const raw = await grabJSON(`locations?search=${query}`) as RawSearchResponse
 
   const metadata: Metadata = loadMetadata(raw.metadata)
