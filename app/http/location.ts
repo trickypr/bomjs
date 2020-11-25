@@ -17,7 +17,7 @@ interface ObservationRaw {
   data: {
     temp: number
     'temp_feels_like': number
-    wind: {
+    wind?: {
       'speed_kilometre': number
       'speed_knot': number
       direction: string
@@ -41,7 +41,7 @@ interface ObservationData {
   issueTime: Date
   temp: number
   feelsLike: number
-  wind: WindObservation
+  wind?: WindObservation
   gust?: GustObservation
   daysRain: number
   humidity: number
@@ -95,7 +95,9 @@ export class Location {
     this.tidalPoint = raw['tidal_point']
   }
 
-  private initWind(wind: ObservationRaw['data']['wind']): WindObservation {
+  private initWind(wind: ObservationRaw['data']['wind']): WindObservation | undefined {
+    if (!wind) return
+
     return {
       speedKMH: wind.speed_kilometre,
       speedKN: wind.speed_knot,
@@ -158,7 +160,7 @@ export class Location {
     return observation.daysRain
   }
 
-  async getWind(): Promise<WindObservation> {
+  async getWind(): Promise<WindObservation | undefined> {
     const observation = await this.observationData()
     return observation.wind
   }
