@@ -1,3 +1,5 @@
 /tests
 .github
 /docs
+dist
+.cache

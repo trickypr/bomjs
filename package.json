@@ -10,7 +10,8 @@
     "dev": "yarn build && yarn test",
     "build": "yarn tsc",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "example:dev": "parcel example/index.html"
   },
   "engines": {
     "node": ">=10.0.0"
@@ -29,11 +30,14 @@
   },
   "homepage": "https://trickypr.github.io/bomjs/",
   "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/plugin-transform-runtime": "^7.12.1",
     "@typescript-eslint/eslint-plugin": "^2.13.0",
     "@typescript-eslint/parser": "^2.13.0",
     "ava": "^2.4.0",
     "eslint": "^6.8.0",
     "ghooks": "^2.0.4",
+    "parcel-bundler": "^1.12.4",
     "typescript": "^3.7.4",
     "vuepress": "^1.2.0"
   },
