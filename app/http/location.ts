@@ -90,12 +90,12 @@ interface RawDailyForecast {
 interface RawDailyForecastData {
 	rain: DailyForecastRain
 	uv: {
-		catagory: string
+		category: string
 		'end_time': string
 		'max_index': number | null
 		'start_time': string
 	}
-	astronimical: {
+	astronomical: {
 		'sunrise_time': string
 		'sunset_time': string
 	}
@@ -125,7 +125,7 @@ interface DailyForecast {
 interface DailyForecastDay {
 	rain: DailyForecastRain
 	uv: DailyForecastUV
-	astronimical: DailyForecastAstronomical
+	astronomical: DailyForecastAstronomical
 	now?: DailyForecastNow
 
 	date: Date
@@ -133,7 +133,7 @@ interface DailyForecastDay {
 	minTemp: number | null
 
 	extendedText: string
-	iconDiscriptor: string
+	iconDescriptor: string
 	shortText: string
 	fireDanger: string | null
 }
@@ -148,7 +148,7 @@ interface DailyForecastRain {
 }
 
 interface DailyForecastUV {
-	catagory?: string
+	category?: string
 	startTime?: Date
 	endTime?: Date
 	maxIndex?: number
@@ -301,21 +301,18 @@ export class Location {
 	//* Forecast functions
 	//* ----------------------------------------------------------------
 
-	// ---------------------------
-	// Forecast helper functions
-
-	private async dailyForcast(): Promise<DailyForecast> {
+	async getDailyForecast(): Promise<DailyForecast> {
 		const {metadata, data: forecasts} = await grabJSON(`locations/${this.geohash}/forecasts/daily`) as RawDailyForecast
 		
 		const createUV = (uv: RawDailyForecastData['uv']): DailyForecastUV => 
 			({
-				catagory: uv.catagory,
+				category: uv.category,
 				endTime: new Date(uv.end_time),
 				startTime: new Date(uv.start_time),
 				maxIndex: uv.max_index ? uv.max_index : undefined
 			})
 
-		const createAstro = (a: RawDailyForecastData['astronimical']): DailyForecastAstronomical => 
+		const createAstro = (a: RawDailyForecastData['astronomical']): DailyForecastAstronomical => 
 			({
 				sunrise: new Date(a.sunrise_time),
 				sunset: new Date(a.sunset_time),
@@ -340,16 +337,17 @@ export class Location {
 			data: forecasts.map(f => ({
 				rain: f.rain,
 				uv: createUV(f.uv),
-				astronimical: createAstro(f.astronimical),
+				astronomical: createAstro(f.astronomical),
 				now: f.now ? createNow(f.now) : undefined,
 				date: new Date(f.date),
 				maxTemp: f.temp_max,
 				minTemp: f.temp_min,
 				extendedText: f.extended_text,
-				iconDiscriptor: f.icon_descriptor,
+				iconDescriptor: f.icon_descriptor,
 				shortText: f.short_text,
 				fireDanger: f.fire_danger
 			}))
 		}
 	}
+
 }

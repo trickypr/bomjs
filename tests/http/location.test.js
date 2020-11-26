@@ -43,5 +43,12 @@ const observationTest = async (l, t) => {
 }
 
 test('Observations: Canberra', async t => await observationTest(await canberra(), t))
-
 test('Observations: Sydney', async t => await observationTest(await sydney(), t))
+
+const dailyForecastTest = async (l, t) => {
+	await l.getDailyForecast()
+	t.pass()
+}
+
+test('Daily forecast: Canberra', async t => await dailyForecastTest(await canberra(), t))
+test('Daily forecast: Sydney', async t => await dailyForecastTest(await sydney(), t))
